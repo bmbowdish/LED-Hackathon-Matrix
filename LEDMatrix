@@ -176,15 +176,22 @@ void traverse(){
   button_prev4 = button4;
   button4 = !digitalRead(10);
   
+  // if the 'up' button has been pressed since the last time this ran, call up()
   if(button1 && !button_prev1){
     up();
   }
+  
+  // if the 'right' button has been pressed since the last time this ran, call right()
   if(button2 && !button_prev2){
     right();
   }
+  
+  // if the 'down' button has been pressed since the last time this ran, call down()
   if(button3 && !button_prev3){
     down();
   }  
+  
+  // if the 'left' button has been pressed since the last time this ran, call left()
   if(button4 && !button_prev4){
     left();
   }
@@ -204,16 +211,22 @@ void boxes(){
 int set = 0; 
 // the loop function runs over and over again forever
 void loop() {
-  //traverse();
-  //iterate();
-  //boxes();
-  //draw(1);
+  
+  //traverse(); debug
+  //iterate(); debug
+  //boxes(); debug
+  //draw(1); debug
+  
+  // determines if mode button (digitalRead(11)) has been pressed since the last time the line ran
   button_prev = button;
   button = !digitalRead(11);
   
+  // if the mode button has been pressed since the last time this ran, change the mode. 
   if(button && !button_prev){
     set = !set;
   }
+  
+  
   if(set){
     traverse();
   }
